@@ -8,6 +8,7 @@
 
 GYT_NAMESPACE_BEGIN
 
+#define GYT_PRINT(...) fmt::print(__VA_ARGS__)
 #define SPD_LOG(X, ...) Gyunity::GetLogger().X(fmt::format(__VA_ARGS__))
 
 #define SPD_LOCATED_LOG(X, ...)                                             \

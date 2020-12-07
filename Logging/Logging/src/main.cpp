@@ -16,6 +16,8 @@ int main()
 	GYT_INFO("Test {} {} {}", 1, 2, 3);
 	GYT_WARN("Warn");
 	GYT_DEBUG("Debug");
-	GYT_ERROR("Error");
+	GYT_PRINT("This is test print, {}, {:f}, {:d}", "string", 1.5f, 10);
+	//GYT_ERROR("Error");
+
 	return 0;
 }
