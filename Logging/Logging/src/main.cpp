@@ -1,6 +1,6 @@
 #include <iostream>
+#include <cassert>
 #include "common/Logger.h"
-#include "spdlog/fmt/fmt.h"
 
 using namespace Gyunity;
 
@@ -30,11 +30,10 @@ int main()
 	GYT_INFO("Test {} {} {}", 1, 2, 3);
 	GYT_WARN("Warn");
 	GYT_DEBUG("Debug");
-	GYT_PRINT("Test text");
+	Print("Test text");
 	A a;
-	GYT_PRINT("A a: {}", a);
-	
-	//GYT_ERROR("Error");
-
+	Print("A a: {}\n", a);
+	int val = 1;
+	GYT_ASSERT(val == 2);
 	return 0;
 }

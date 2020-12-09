@@ -2,7 +2,7 @@
 
 #include "Core.h"
 #include "spdlog/common.h"
-#include "spdlog/fmt/fmt.h"
+#include "fmt/fmt.h"
 
 namespace spdlog {
 	class logger;
