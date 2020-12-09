@@ -4,12 +4,6 @@
 
 GYT_NAMESPACE_BEGIN
 
-Logger::Logger()
-{
-	mpConsole = spdlog::stdout_color_mt("console");
-	spdlog::set_pattern("%^[%l] [%D %X.%e] %v%$");
-	SetLevel();
-}
 
 void Logger::Info(const std::string& msg) const
 {
@@ -52,6 +46,7 @@ void Logger::SetLevel(const std::string& levelName /*= "Info"*/)
 	spdlog::set_level(spdlog::level::level_enum(newLevel));
 }
 
+
 int Logger::LevelFromString(const std::string& levelName)
 {
 	if (levelName == "Trace") {
@@ -80,10 +75,42 @@ int Logger::LevelFromString(const std::string& levelName)
 	}
 }
 
-Logger& GetLogger()
+Logger::Logger()
 {
-	static Logger logger;
-	return logger;
+
 }
+
+Logger::~Logger()
+{
+
+}
+
+DefaultLogger::DefaultLogger()
+{
+	mpConsole = spdlog::stdout_color_mt("ConsoleLogger");
+	mpConsole->set_pattern("%^[%l] [%D %X.%e] %v%$");
+	SetLevel();
+}
+
+InfoLogger::InfoLogger()
+{
+	mpConsole = spdlog::stdout_color_mt("InfoLogger");
+	mpConsole->set_pattern("%v");
+	SetLevel();
+
+}
+
+Logger* GetDefaultLogger()
+{
+	static DefaultLogger defaultLogger;
+	return &defaultLogger;
+}
+
+Logger* GetInfoLogger()
+{
+	static InfoLogger infoLogger;
+	return &infoLogger;
+}
+
 
 GYT_NAMESPACE_END
