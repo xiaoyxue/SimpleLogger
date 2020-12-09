@@ -1,5 +1,6 @@
 #pragma once
 #include "Def.h"
+#include "spdlog/fmt/bundled/ostream.h"
 #include <vector>
 
 
@@ -29,6 +30,6 @@ do                                              \
     GYT_UNREACHABLE                             \
 } while (0)
 
-#define GYT_PRINT(...) SPD_INFO_LOG(Info, __VA_ARGS__)
+#define GYT_PRINT(...) fmt::print(__VA_ARGS__)
 
 GYT_NAMESPACE_END

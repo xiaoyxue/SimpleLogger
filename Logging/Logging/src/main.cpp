@@ -1,15 +1,20 @@
 #include <iostream>
 #include "common/Logger.h"
+#include "spdlog/fmt/fmt.h"
 
 using namespace Gyunity;
 
 class A {
 public:
 	std::string a = "abc";
-	std::string ToString() {
-		return fmt::format("a: {}", a);
-	}
+	friend std::ostream& operator<<(std::ostream& os, const A &a);
 };
+
+std::ostream& operator<<(std::ostream& os, const A &a)
+{
+	os << a.a;
+	return os;
+}
 
 int main()
 {
@@ -25,9 +30,11 @@ int main()
 	GYT_INFO("Test {} {} {}", 1, 2, 3);
 	GYT_WARN("Warn");
 	GYT_DEBUG("Debug");
-	GYT_PRINT("sdfdsfsdf");
+	GYT_PRINT("Test text");
 	A a;
-	GYT_PRINT("\n{}\n", a.ToString());
+	GYT_PRINT("A a: {}", a);
+	
 	//GYT_ERROR("Error");
+	
 	return 0;
 }
